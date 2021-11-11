@@ -62,3 +62,5 @@ func canJump2(nums []int) bool {
 	}
 	return false
 }
+
+//跳跃游戏不建议使用剩余步数计算，建议使用总步数计算
