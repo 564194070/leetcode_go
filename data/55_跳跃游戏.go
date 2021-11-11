@@ -36,3 +36,29 @@ func canJump(nums []int) bool {
 	return true
 
 }
+
+//使用贪心算法优化了过程
+func canJump2(nums []int) bool {
+	max := func(num1, num2 int) int {
+		if num1 > num2 {
+			return num1
+		}
+		return num2
+	}
+	if 0 == nums[0] {
+		if len(nums) == 1 {
+			return true
+		}
+		return false
+	}
+	mostlen := 1
+	for i := 0; i < len(nums); i++ {
+		if mostlen > 0 {
+			mostlen = max(mostlen-1, nums[i])
+			if mostlen >= len(nums)-i-1 {
+				return true
+			}
+		}
+	}
+	return false
+}
